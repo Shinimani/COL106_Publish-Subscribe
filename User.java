@@ -26,7 +26,10 @@ public class User {
 	public void SubscribeTo(User user, int time)
 	{
 		User_tuple temp = new User_tuple(user,time);
-		this.Subscriptions.add(temp);
+		if (!this.CheckSubscriber(user))
+		{
+			this.Subscriptions.add(temp);
+		}
 	}
 	
 	public boolean CheckSubscriber(User user)
@@ -43,6 +46,7 @@ public class User {
 //		while(!ans && )
 		return ans;
 	}
+	
 	
 	
 

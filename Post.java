@@ -8,7 +8,8 @@ public class Post {
 	public int timeStamp;
 	public int publisherId;
 	public int postId;
-	public Post referencePost;
+	// public Post referencePost;
+	public int referencePost
 
 	//Constructor for dummy post
 	Post()
@@ -26,7 +27,7 @@ public class Post {
 		this.postId = tid;
 	}
 	//constructor for repost
-	Post(int time,int uid,Post ref,int tid)
+	Post(int time,int uid,int ref,int tid)
 	{
 		this.type = 2;
 		this.timeStamp = time;
@@ -35,7 +36,7 @@ public class Post {
 		this.postId = tid;
 	}
 	//constructor for reply
-	Post(int time,int uid,Post ref,String text, int tid)
+	Post(int time,int uid,int ref,String text, int tid)
 	{
 		this.type = 3;
 		this.timeStamp = time;
@@ -43,6 +44,26 @@ public class Post {
 		this.referencePost=ref;
 		this.text = text;
 		this.postId = tid;
+	}
+
+	public int getId()
+	{
+		return this.postId;
+	}
+
+	public int getUid()
+	{
+		return this.publisherId;
+	}
+
+	public int getTime()
+	{
+		return this.timeStamp;
+	}
+
+	public String getText()
+	{
+		return this.text;
 	}
 	
 

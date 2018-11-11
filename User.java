@@ -15,7 +15,7 @@ public class User {
 		this.userid = uid;
 		master.userTable.addUser(this);
 		this.Subscriptions = new ArrayList<User_tuple>(2);
-		this.PostList = new ArrayList<Post>(1);
+		// this.PostList = new ArrayList<Post>(1);
 	}
 
 	public int getTime()
@@ -37,6 +37,21 @@ public class User {
 		}
 	}
 
+	public boolean CheckSubscriber(int subid)
+	{
+		boolean ans = false;
+		for (int i = 0; i<this.Subscriptions.size();i++)
+		{
+			if (this.Subscriptions.get(i).getUser()==subid)
+			{
+				ans = true;
+				break;
+			}
+		}
+//		while(!ans && )
+		return ans;
+	}
+
 	public boolean CheckSubscriber(User user)
 	{
 		boolean ans = false;
@@ -52,10 +67,28 @@ public class User {
 		return ans;
 	}
 
-	//returns null if not found
+//returns true if unsubscription occurred, otherwise returns false
+	public void Unsubscribe(User user, int time)
+	{
+		boolean flag = false;
+		int tempid = user.getId();
+		for (int i = 0; i < this.Subscriptions.size(); i++)
+		{
+			User_tuple temp = this.Subscriptions.get(i);
+			if (temp.getUser() == tempid)
+			{
+				this.Subscriptions.remove(i);
+				flag = true;
+				break;
+			}
+		}
+		return flag;
+	}
+
+	// returns null if not found
 	public Post returnPostById(int postId)
 	{
-//		Post ans = new Post();
+		// Post ans = new Post();
 		for (int i = 0; i < this.PostList.size(); i++)
 		{
 			if (this.PostList.get(i).postId == postId)
@@ -63,6 +96,11 @@ public class User {
 //			else continue;
 		}
 		return null;
+	}
+
+	public void addPost(Post post)
+	{
+		this.PostList.add(post);
 	}
 
 

@@ -1,11 +1,11 @@
 
-class HashEntry
+class HashEntryUser
 {
 	User value;
 	int key;
-	HashEntry next;
+	HashEntryUser next;
 
-	HashEntry(User value)
+	HashEntryUser(User value)
 	{
 		this.value = value;
 		this.next = null;
@@ -16,13 +16,13 @@ class HashEntry
 
 public class HashTableUsers{
 
-	public HashEntry[] table;
+	public HashEntryUser[] table;
 //	public int noOfElements;
 
 
 	public HashTableUsers()
 	{
-		table = new HashEntry[101];
+		table = new HashEntryUser[101];
 		for (int i = 0;i<101;i++)
 		{
 			table[i] = null;
@@ -35,17 +35,17 @@ public class HashTableUsers{
 		int hash = getHashIndex(u.getId());
 		if (table[hash]==null)
 		{
-			table[hash] = new HashEntry (u);
+			table[hash] = new HashEntryUser (u);
 		}
 		else
 		{
-			HashEntry entry = table[hash];
+			HashEntryUser entry = table[hash];
 			while (entry.next!=null && entry.key != u.getId())
 			{
 				entry=entry.next;
 			}
 			if (entry.key != (u.getId()))
-				entry.next = new HashEntry(u);
+				entry.next = new HashEntryUser(u);
 		}
 	}
 
@@ -58,7 +58,7 @@ public class HashTableUsers{
 	{
 		User ans = null;
 		int hash = this.getHashIndex(Uid);
-		HashEntry hashe = this.table[hash];
+		HashEntryUser hashe = this.table[hash];
 		while (hashe!=null)
 		{
 			if (hashe.value.userid == Uid)

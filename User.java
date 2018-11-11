@@ -15,7 +15,7 @@ public class User {
 		this.userid = uid;
 		master.userTable.addUser(this);
 		this.Subscriptions = new ArrayList<User_tuple>(2);
-		// this.PostList = new ArrayList<Post>(1);
+		this.PostList = new ArrayList<Post>(1);
 	}
 
 	public int getTime()
@@ -30,10 +30,11 @@ public class User {
 
 	public void SubscribeTo(User user, int time)
 	{
+		boolean bla = true;
 		User_tuple temp = new User_tuple(user.getId(),time);
 		if (!this.CheckSubscriber(user))
 		{
-			this.Subscriptions.add(temp);
+			bla = this.Subscriptions.add(temp);
 		}
 	}
 
@@ -70,7 +71,7 @@ public class User {
 //returns true if unsubscription occurred, otherwise returns false
 	public void Unsubscribe(User user, int time)
 	{
-		boolean flag = false;
+		// boolean flag = false;
 		int tempid = user.getId();
 		for (int i = 0; i < this.Subscriptions.size(); i++)
 		{
@@ -78,11 +79,11 @@ public class User {
 			if (temp.getUser() == tempid)
 			{
 				this.Subscriptions.remove(i);
-				flag = true;
+				// flag = true;
 				break;
 			}
 		}
-		return flag;
+		// return flag;
 	}
 
 	// returns null if not found
@@ -100,7 +101,12 @@ public class User {
 
 	public void addPost(Post post)
 	{
-		this.PostList.add(post);
+		boolean bla = true;
+		// System.out.println("hereadd");
+// System.out.println(this.PostList);
+		// System.out.println("hereadd");
+			bla = this.PostList.add(post);
+
 	}
 
 

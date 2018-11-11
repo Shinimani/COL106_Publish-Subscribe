@@ -9,7 +9,7 @@ public class Post {
 	public int publisherId;
 	public int postId;
 	// public Post referencePost;
-	public int referencePost
+	public int referencePost;
 
 	//Constructor for dummy post
 	Post()

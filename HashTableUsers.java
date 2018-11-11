@@ -4,22 +4,22 @@ class HashEntry
 	User value;
 	int key;
 	HashEntry next;
-	
+
 	HashEntry(User value)
 	{
 		this.value = value;
 		this.next = null;
 		this.key = value.getId();
 	}
-	
+
 }
 
 public class HashTableUsers{
-	
+
 	public HashEntry[] table;
 //	public int noOfElements;
 
-	
+
 	public HashTableUsers()
 	{
 		table = new HashEntry[101];
@@ -27,13 +27,13 @@ public class HashTableUsers{
 		{
 			table[i] = null;
 		}
-		
+
 	}
-	
+
 	public void addUser(User u)
 	{
 		int hash = getHashIndex(u.getId());
-		if (table[hash]==null) 
+		if (table[hash]==null)
 		{
 			table[hash] = new HashEntry (u);
 		}
@@ -48,13 +48,13 @@ public class HashTableUsers{
 				entry.next = new HashEntry(u);
 		}
 	}
-	
+
 	public int getHashIndex(int x)
 	{
 		return x%101;
 	}
 
-	public User findWord(int Uid)
+	public User findUser(int Uid)
 	{
 		User ans = null;
 		int hash = this.getHashIndex(Uid);

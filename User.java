@@ -4,28 +4,30 @@ import java.util.ArrayList;
 public class User {
 	public int tminus1;
 	public int userid;
-	
+	public Master master;
 	public ArrayList<User_tuple> Subscriptions;
 	public ArrayList<Post> PostList;
-	
-	User(int time, int uid)
+
+	User(int time, int uid, Master master)
 	{
+		this.master = master;
 		this.tminus1 = time;
 		this.userid = uid;
+		master.userTable.addUser(this);
 		this.Subscriptions = new ArrayList<User_tuple>(2);
 		this.PostList = new ArrayList<Post>(1);
 	}
-	
+
 	public int getTime()
 	{
 		return this.tminus1;
 	}
-	
+
 	public int getId()
 	{
 		return this.userid;
 	}
-	
+
 	public void SubscribeTo(User user, int time)
 	{
 		User_tuple temp = new User_tuple(user.getId(),time);
@@ -34,7 +36,7 @@ public class User {
 			this.Subscriptions.add(temp);
 		}
 	}
-	
+
 	public boolean CheckSubscriber(User user)
 	{
 		boolean ans = false;
@@ -49,7 +51,7 @@ public class User {
 //		while(!ans && )
 		return ans;
 	}
-	
+
 	//returns null if not found
 	public Post returnPostById(int postId)
 	{
@@ -62,9 +64,9 @@ public class User {
 		}
 		return null;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

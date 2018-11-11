@@ -10,6 +10,11 @@ public class Post {
 	public int postId;
 	public Post referencePost;
 
+	//Constructor for dummy post
+	Post()
+	{
+		this.timeStamp = (-100);
+	}
 	
 	//constructor for New post
 	Post(int time,int uid,String text,int tid)

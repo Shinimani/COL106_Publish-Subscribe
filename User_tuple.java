@@ -1,29 +1,29 @@
 public class User_tuple implements Comparable<User_tuple>{
-	User u;
-	int t;
-	User_tuple(User u, int t)
+	int userID;
+	int timeStamp;
+	User_tuple(int u, int t)
 	{
-		this.u = u;
-		this.t = t;
+		this.userID = u;
+		this.timeStamp = t;
 	}
 	
-	public User getUser()
+	public int getUser()
 	{
-		return this.u;
+		return this.userID;
 	}
 	
 	public int getTimeStamp()
 	{
-		return this.t;
+		return this.timeStamp;
 	}
 	
 	public int compareTo(User_tuple other)
 	{
-		if (this.t > other.t)
+		if (this.timeStamp > other.timeStamp)
 		{
 			return 1;
 		}
-		else if (this.t < other.t)
+		else if (this.timeStamp < other.timeStamp)
 		{
 			return -1;
 		}
